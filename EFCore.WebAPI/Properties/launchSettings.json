@@ -1,11 +1,11 @@
 ﻿{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:59119",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:25782",
+      "sslPort": 44337
     }
   },
   "profiles": {
@@ -19,9 +19,10 @@
     },
     "EFCore.WebAPI": {
       "commandName": "Project",
+      "dotnetRunMessages": "true",
       "launchBrowser": true,
       "launchUrl": "api/values",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

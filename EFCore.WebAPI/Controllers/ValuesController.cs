@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EFCore.Domain;
+using EFCore.Repo;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,12 @@ namespace EFCore.WebAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        public readonly HeroiContext _context;
+        public ValuesController(HeroiContext context)
+        {
+            _context = context;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -18,10 +26,15 @@ namespace EFCore.WebAPI.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("{nameHero}")]
+        public ActionResult<string> Get(string nameHero)
         {
-            return "value";
+            var heroi = new Heroi { Nome = nameHero };
+
+            _context.Herois.Add(heroi);
+            //contexto.Add(heroi);
+            _context.SaveChanges();
+            return Ok();
         }
 
         // POST api/values
